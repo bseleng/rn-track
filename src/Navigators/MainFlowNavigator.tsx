@@ -9,15 +9,15 @@ const BottomTabs = createBottomTabNavigator();
 
 const MainFlowNavigator = () => (
   <BottomTabs.Navigator>
-    <BottomTabs.Screen name={Routes.Account} component={AccountScreen} />
-    <BottomTabs.Screen
-      name={Routes.TrackCreate}
-      component={TrackCreateScreen}
-    />
     <BottomTabs.Screen
       name={Routes.TrackListDetail}
       component={TrackListDetailNavigator}
     />
+    <BottomTabs.Screen
+      name={Routes.TrackCreate}
+      component={TrackCreateScreen}
+    />
+    <BottomTabs.Screen name={Routes.Account} component={AccountScreen} />
   </BottomTabs.Navigator>
 );
 

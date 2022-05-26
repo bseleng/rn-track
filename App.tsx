@@ -9,7 +9,11 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          animationEnabled: false,
+        }}
+      >
         <Stack.Screen name={Routes.Guest} component={AuthFlowNavigator} />
         <Stack.Screen name={Routes.User} component={MainFlowNavigator} />
       </Stack.Navigator>

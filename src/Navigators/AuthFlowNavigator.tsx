@@ -6,14 +6,11 @@ import SignupScreen from "../screens/SignupScreen";
 
 const Stack = createStackNavigator();
 
-
 const AuthFlowNavigator = () => (
   <Stack.Navigator>
-    <Stack.Screen name={Routes.Signin} component={SigninScreen}/>
-    <Stack.Screen name={Routes.Signup} component={SignupScreen}/>
+    <Stack.Screen name={Routes.Signup} component={SignupScreen} />
+    <Stack.Screen name={Routes.Signin} component={SigninScreen} />
   </Stack.Navigator>
-)
+);
 
-export default AuthFlowNavigator
-
-
+export default AuthFlowNavigator;
