@@ -14,7 +14,11 @@ const App = () => {
           animationEnabled: false,
         }}
       >
-        <Stack.Screen name={Routes.Guest} component={AuthFlowNavigator} />
+        <Stack.Screen
+          name={Routes.Guest}
+          component={AuthFlowNavigator}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name={Routes.User} component={MainFlowNavigator} />
       </Stack.Navigator>
     </NavigationContainer>

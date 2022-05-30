@@ -8,8 +8,16 @@ const Stack = createStackNavigator();
 
 const AuthFlowNavigator = () => (
   <Stack.Navigator>
-    <Stack.Screen name={Routes.Signup} component={SignupScreen} />
-    <Stack.Screen name={Routes.Signin} component={SigninScreen} />
+    <Stack.Screen
+      name={Routes.Signup}
+      component={SignupScreen}
+      options={{ headerShown: false }}
+    />
+    <Stack.Screen
+      name={Routes.Signin}
+      component={SigninScreen}
+      options={{ headerShown: false }}
+    />
   </Stack.Navigator>
 );
 
