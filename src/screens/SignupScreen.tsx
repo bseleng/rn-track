@@ -2,10 +2,10 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import Routes from "../Navigators/routes";
 import Navigation from "../types/thirdParty/navigation";
-import { Button, Input, Text } from "react-native-elements";
+import { Button, Text } from "react-native-elements";
 import Spacer from "../utils/styleHelpers/Spacer";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import HookFormInput from "../_atoms/HookFormInput/HookFormInput";
 
 interface IProps {
@@ -35,22 +35,16 @@ const SignupScreen = ({ navigation: { navigate } }: IProps) => {
         <Spacer cssProp={"margin"} cssValues={[150, 24, 40, 24]}>
           <Text h2>Sign up for Tracker</Text>
         </Spacer>
-        <Controller
+        <HookFormInput
+          label={"Email"}
           control={control}
-          rules={{
-            required: true,
-          }}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              label={"Email"}
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-            />
-          )}
-          name="email"
+          rules={{ required: true }}
+          name={"email"}
+          errors={errors}
+          errorMessage={"email is required"}
+          autoCorrect={false}
+          autoCapitalize={"none"}
         />
-        {errors.email && <Text> Email is required.</Text>}
         <Spacer cssProp={"margin"} cssValues={[0, 0, 8, 0]} />
         <HookFormInput
           label={"Password"}
@@ -59,6 +53,9 @@ const SignupScreen = ({ navigation: { navigate } }: IProps) => {
           name={"password"}
           errors={errors}
           errorMessage={"password is required"}
+          autoCorrect={false}
+          autoCapitalize={"none"}
+          secureTextEntry
         />
         <Spacer cssProp={"margin"} cssValues={[8, 8, 0, 8]}>
           <Button title="Sign Up" onPress={handleSubmit(onSubmit)} />

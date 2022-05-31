@@ -11,6 +11,9 @@ interface IProps {
   label: string;
   name: keyof SignUpFormValues;
   errorMessage: string;
+  autoCorrect?: boolean;
+  autoCapitalize?: "none" | "sentences" | "words" | "characters" | undefined;
+  secureTextEntry?: boolean;
 }
 
 const HookFormInput = ({
@@ -20,8 +23,10 @@ const HookFormInput = ({
   label,
   name,
   errorMessage,
+  autoCorrect,
+  autoCapitalize,
+  secureTextEntry,
 }: IProps) => {
-  console.log("errors", errors);
   return (
     <>
       <Controller
@@ -33,6 +38,9 @@ const HookFormInput = ({
             onBlur={onBlur}
             onChangeText={onChange}
             value={value}
+            autoCapitalize={autoCapitalize}
+            autoCorrect={autoCorrect}
+            secureTextEntry={secureTextEntry}
           />
         )}
         name={name}
