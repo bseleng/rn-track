@@ -7,6 +7,8 @@ import Spacer from "../utils/styleHelpers/Spacer";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { useForm } from "react-hook-form";
 import HookFormInput from "../_atoms/HookFormInput/HookFormInput";
+import { Context as AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
 
 interface IProps {
   navigation: Navigation;
@@ -27,7 +29,11 @@ const SignupScreen = ({ navigation: { navigate } }: IProps) => {
       password: "",
     },
   });
-  const onSubmit = (data: SignUpFormValues) => console.log(data);
+  const { state, signUp } = useContext(AuthContext);
+  const onSubmit = (data: SignUpFormValues) => {
+    console.log("data", data);
+    signUp(data);
+  };
 
   return (
     <KeyboardAwareScrollView style={styles.wrap}>

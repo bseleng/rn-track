@@ -1,5 +1,5 @@
 import createDataContext from "./CreateDataContext";
-
+import trackerApi from "../api/tracker";
 const authReducer = (state, action) => {
   switch (action.type) {
     default:
@@ -8,8 +8,14 @@ const authReducer = (state, action) => {
 };
 
 const signUp = (dispatch: any) => {
-  return ({ email, password }) => {
+  return async ({ email, password }: { email: string; password: string }) => {
     console.log(email, password);
+    try {
+      const response = await trackerApi.post("/signup", { email, password });
+      console.log(response.data);
+    } catch (err) {
+      console.error(err.response.data);
+    }
   };
 };
 
