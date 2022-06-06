@@ -63,6 +63,11 @@ const SignupScreen = ({ navigation: { navigate } }: IProps) => {
           autoCapitalize={"none"}
           secureTextEntry
         />
+        {state.errorMessage && (
+          <Spacer cssProp={"margin"} cssValues={[0, 8, 8, 8]}>
+            <Text style={styles.errorMessage}>{state.errorMessage}</Text>
+          </Spacer>
+        )}
         <Spacer cssProp={"margin"} cssValues={[8, 8, 0, 8]}>
           <Button title="Sign Up" onPress={handleSubmit(onSubmit)} />
         </Spacer>
@@ -89,6 +94,10 @@ const styles = StyleSheet.create({
   },
   navButtonText: {
     color: "blue",
+  },
+  errorMessage: {
+    fontSize: 16,
+    color: "red",
   },
 });
 

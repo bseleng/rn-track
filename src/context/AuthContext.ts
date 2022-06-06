@@ -1,7 +1,10 @@
 import createDataContext from "./CreateDataContext";
 import trackerApi from "../api/tracker";
+import { actionTypes } from "../types/redux/actionTypes";
 const authReducer = (state, action) => {
   switch (action.type) {
+    case actionTypes.addError:
+      return { ...state, errorMessage: action.payload };
     default:
       return state;
   }
@@ -15,6 +18,10 @@ const signUp = (dispatch: any) => {
       console.log(response.data);
     } catch (err) {
       console.error(err.response.data);
+      dispatch({
+        type: actionTypes.addError,
+        payload: "something went wrong with signup",
+      });
     }
   };
 };
@@ -34,5 +41,5 @@ const signOut = (dispatch: any) => {
 export const { Provider, Context } = createDataContext(
   authReducer,
   { signIn, signOut, signUp },
-  { isSignedIn: false }
+  { isSignedIn: false, errorMessage: "" }
 );
