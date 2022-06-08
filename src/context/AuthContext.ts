@@ -2,6 +2,9 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import createDataContext from "./CreateDataContext";
 import trackerApi from "../api/tracker";
 import { actionTypes } from "../types/redux/actionTypes";
+import Routes from "../Navigators/routes";
+import { navigate } from "../navigationRef";
+
 const authReducer = (state, action) => {
   switch (action.type) {
     case actionTypes.addError:
@@ -20,6 +23,7 @@ const signUp = (dispatch: any) => {
       const response = await trackerApi.post("/signup", { email, password });
       await AsyncStorage.setItem("token", response.data.token);
       dispatch({ type: actionTypes.signUp, payload: response.data.token });
+      navigate(Routes.User);
     } catch (err) {
       console.error(err.response.data);
       dispatch({

@@ -5,12 +5,13 @@ import AuthFlowNavigator from "./src/Navigators/AuthFlowNavigator";
 import MainFlowNavigator from "./src/Navigators/MainFlowNavigator";
 import Routes from "./src/Navigators/routes";
 import { Provider as AuthProvider } from "./src/context/AuthContext";
+import { setNavigator } from "./src/navigationRef";
 
 const Stack = createStackNavigator();
 const App = () => {
   return (
     <AuthProvider>
-      <NavigationContainer>
+      <NavigationContainer ref={(nav) => setNavigator(nav)}>
         <Stack.Navigator
           screenOptions={{
             animationEnabled: false,

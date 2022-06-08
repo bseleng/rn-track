@@ -63,11 +63,11 @@ const SignupScreen = ({ navigation: { navigate } }: IProps) => {
           autoCapitalize={"none"}
           secureTextEntry
         />
-        {state.errorMessage && (
+        {state.errorMessage ? (
           <Spacer cssProp={"margin"} cssValues={[0, 8, 8, 8]}>
             <Text style={styles.errorMessage}>{state.errorMessage}</Text>
           </Spacer>
-        )}
+        ) : null}
         <Spacer cssProp={"margin"} cssValues={[8, 8, 0, 8]}>
           <Button title="Sign Up" onPress={handleSubmit(onSubmit)} />
         </Spacer>
