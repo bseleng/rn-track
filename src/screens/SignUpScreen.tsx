@@ -75,6 +75,7 @@ const SignUpScreen = ({ navigation: { navigate } }: IProps) => {
           <Button
             title="Already have an account? Sign in"
             onPress={() => navigate(Routes.SignIn)}
+            type="clear"
           />
         </Spacer>
       </View>

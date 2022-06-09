@@ -70,6 +70,7 @@ const SignInScreen = ({ navigation: { navigate } }: IProps) => {
           <Button
             title="Don't have an account? Sign Un"
             onPress={() => navigate(Routes.SignUp)}
+            type="clear"
           />
         </Spacer>
       </View>
