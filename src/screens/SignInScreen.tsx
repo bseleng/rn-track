@@ -68,7 +68,7 @@ const SignInScreen = ({ navigation: { navigate } }: IProps) => {
         </Spacer>
         <Spacer cssProp={"margin"} cssValues={[8, 8, 0, 8]}>
           <Button
-            title="Don't have an account? Sign Un"
+            title="Don't have an account? Sign Up"
             onPress={() => navigate(Routes.SignUp)}
             type="clear"
           />
