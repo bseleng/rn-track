@@ -1,7 +1,7 @@
 import React from "react";
 import { Control, Controller, RegisterOptions } from "react-hook-form";
 import { Input, Text } from "react-native-elements";
-import { SignUpFormValues } from "../../screens/SignupScreen";
+import { SignUpFormValues } from "../../screens/SignUpScreen";
 import { FieldErrors } from "react-hook-form/dist/types/errors";
 
 interface IProps {

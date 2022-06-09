@@ -1,24 +1,20 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
-import Routes from "../Navigators/routes";
-import Navigation from "../types/thirdParty/navigation";
-import { Button, Text } from "react-native-elements";
+import React, { useContext } from "react";
+import { View, StyleSheet } from "react-native";
 import Spacer from "../utils/styleHelpers/Spacer";
+import HookFormInput from "../_atoms/HookFormInput/HookFormInput";
+import { Button, Text } from "react-native-elements";
+import Routes from "../Navigators/routes";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { useForm } from "react-hook-form";
-import HookFormInput from "../_atoms/HookFormInput/HookFormInput";
 import { Context as AuthContext } from "../context/AuthContext";
-import { useContext } from "react";
+import { SignUpFormValues } from "./SignUpScreen";
+import Navigation from "../types/thirdParty/navigation";
 
 interface IProps {
   navigation: Navigation;
 }
-export type SignUpFormValues = {
-  email: string;
-  password: string;
-};
 
-const SignupScreen = ({ navigation: { navigate } }: IProps) => {
+const SignInScreen = ({ navigation: { navigate } }: IProps) => {
   const {
     control,
     handleSubmit,
@@ -29,17 +25,16 @@ const SignupScreen = ({ navigation: { navigate } }: IProps) => {
       password: "",
     },
   });
-  const { state, signUp } = useContext(AuthContext);
+  const { state, signIn } = useContext(AuthContext);
   const onSubmit = (data: SignUpFormValues) => {
-    console.log("data", data);
-    signUp(data);
+    signIn(data);
   };
 
   return (
     <KeyboardAwareScrollView style={styles.wrap}>
       <View style={styles.content}>
         <Spacer cssProp={"margin"} cssValues={[150, 24, 40, 24]}>
-          <Text h2>Sign up for Tracker</Text>
+          <Text h2>Sign in</Text>
         </Spacer>
         <HookFormInput
           label={"Email"}
@@ -69,12 +64,12 @@ const SignupScreen = ({ navigation: { navigate } }: IProps) => {
           </Spacer>
         ) : null}
         <Spacer cssProp={"margin"} cssValues={[8, 8, 0, 8]}>
-          <Button title="Sign Up" onPress={handleSubmit(onSubmit)} />
+          <Button title="Sign In" onPress={handleSubmit(onSubmit)} />
         </Spacer>
         <Spacer cssProp={"margin"} cssValues={[8, 8, 0, 8]}>
           <Button
-            title="Already have an account? Sign in"
-            onPress={() => navigate(Routes.Signin)}
+            title="Don't have an account? Sign Un"
+            onPress={() => navigate(Routes.SignUp)}
           />
         </Spacer>
       </View>
@@ -101,4 +96,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignupScreen;
+export default SignInScreen;

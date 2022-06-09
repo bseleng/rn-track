@@ -1,6 +1,6 @@
 enum Routes {
-  Signin = "Signin",
-  Signup = "Signup",
+  SignIn = "SignIn",
+  SignUp = "SignUp",
   Account = "Account",
   TrackList = "TrackList",
   TrackCreate = "TrackCreate",

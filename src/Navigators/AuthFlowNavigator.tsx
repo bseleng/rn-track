@@ -1,21 +1,21 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import SigninScreen from "../screens/SigninScreen";
+import SignInScreen from "../screens/SignInScreen";
 import Routes from "./routes";
-import SignupScreen from "../screens/SignupScreen";
+import SignUpScreen from "../screens/SignUpScreen";
 
 const Stack = createStackNavigator();
 
 const AuthFlowNavigator = () => (
   <Stack.Navigator>
     <Stack.Screen
-      name={Routes.Signup}
-      component={SignupScreen}
+      name={Routes.SignUp}
+      component={SignUpScreen}
       options={{ headerShown: false }}
     />
     <Stack.Screen
-      name={Routes.Signin}
-      component={SigninScreen}
+      name={Routes.SignIn}
+      component={SignInScreen}
       options={{ headerShown: false }}
     />
   </Stack.Navigator>
