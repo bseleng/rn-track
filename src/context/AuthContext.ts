@@ -1,46 +1,48 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import createDataContext from "./CreateDataContext";
 import trackerApi from "../api/tracker";
-import { actionTypes } from "../types/redux/actionTypes";
+import { ActionTypes } from "../types/redux/ActionTypes";
 import Routes from "../Navigators/routes";
 import { navigate } from "../navigationRef";
+import ActionLocal from "../types/redux/Action";
+import { Dispatch } from "react";
 
-const authReducer = (state, action) => {
+const authReducer = (state: StateLocal, action: ActionLocal) => {
   switch (action.type) {
-    case actionTypes.addError:
+    case ActionTypes.addError:
       return { ...state, errorMessage: action.payload };
-    case actionTypes.signUp:
+    case ActionTypes.signUp:
       return { ...state, token: action.payload, errorMessage: "" };
     default:
       return state;
   }
 };
 
-const signUp = (dispatch: any) => {
+const signUp = (dispatch: Dispatch<ActionLocal>) => {
   return async ({ email, password }: { email: string; password: string }) => {
     console.log(email, password);
     try {
       const response = await trackerApi.post("/signup", { email, password });
       await AsyncStorage.setItem("token", response.data.token);
-      dispatch({ type: actionTypes.signUp, payload: response.data.token });
+      dispatch({ type: ActionTypes.signUp, payload: response.data.token });
       navigate(Routes.User);
     } catch (err) {
       console.error(err.response.data);
       dispatch({
-        type: actionTypes.addError,
+        type: ActionTypes.addError,
         payload: "something went wrong with signup",
       });
     }
   };
 };
 
-const signIn = (dispatch: any) => {
-  return ({ email, password }) => {
-    console.log(email, password);
+const signIn = (dispatch: Dispatch<ActionLocal>) => {
+  return ({ email, password }: { email: string; password: string }) => {
+    console.log("SIGN IN", email, password);
   };
 };
 
-const signOut = (dispatch: any) => {
+const signOut = (dispatch: Dispatch<ActionLocal>) => {
   return () => {
     console.log("signed out");
   };
