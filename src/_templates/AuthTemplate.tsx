@@ -85,11 +85,13 @@ const AuthTemplate = ({
           secureTextEntry
         />
         {state.errorMessage ? (
-          <Spacer cssProp={"margin"} cssValues={[0, 8, 8, 8]}>
-            <Text style={styles.errorMessage}>{state.errorMessage}</Text>
+          <Spacer cssProp={"margin"} cssValues={[-22, 8, 8, 8]}>
+            <View style={styles.errorWrap}>
+              <Text style={styles.errorMessage}>{state.errorMessage}</Text>
+            </View>
           </Spacer>
         ) : null}
-        <Spacer cssProp={"margin"} cssValues={[8, 8, 0, 8]}>
+        <Spacer cssProp={"margin"} cssValues={[24, 8, 0, 8]}>
           <Button title={submitButtonText} onPress={handleSubmit(onSubmit)} />
         </Spacer>
         <Spacer cssProp={"margin"} cssValues={[8, 8, 0, 8]}>
@@ -118,8 +120,13 @@ const styles = StyleSheet.create({
     color: "blue",
   },
   errorMessage: {
-    fontSize: 16,
+    fontSize: 12,
     color: "red",
+    position: "absolute",
+  },
+  errorWrap: {
+    display: "flex",
+    alignItems: "flex-end",
   },
 });
 

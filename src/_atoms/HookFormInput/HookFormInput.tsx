@@ -1,6 +1,6 @@
 import React from "react";
 import { Control, Controller, RegisterOptions } from "react-hook-form";
-import { Input, Text } from "react-native-elements";
+import { Input } from "react-native-elements";
 import { SignUpFormValues } from "../../screens/SignUpScreen";
 import { FieldErrors } from "react-hook-form/dist/types/errors";
 
@@ -41,11 +41,12 @@ const HookFormInput = ({
             autoCapitalize={autoCapitalize}
             autoCorrect={autoCorrect}
             secureTextEntry={secureTextEntry}
+            errorMessage={errors[name] ? errorMessage : undefined}
+            errorStyle={{}}
           />
         )}
         name={name}
       />
-      {errors[name] && <Text>{errorMessage}</Text>}
     </>
   );
 };
