@@ -14,7 +14,7 @@ const SignInScreen = ({ navigation }: IProps) => {
       navButtonText={"Don't have an account? Sign Up"}
       navButtonRoute={Routes.SignUp}
       title={"Sgn in"}
-      submitButtonText={"Sign Ip"}
+      submitButtonText={"Sign In"}
       submitButtonAction={ActionTypes.signIn}
       navigation={navigation}
     />

@@ -13,6 +13,8 @@ const authReducer = (state: StateLocal, action: ActionLocal) => {
       return { ...state, errorMessage: action.payload };
     case ActionTypes.signUp:
       return { ...state, token: action.payload, errorMessage: "" };
+    case ActionTypes.signIn:
+      return { ...state, token: action.payload, errorMessage: "" };
     default:
       return state;
   }
@@ -37,8 +39,19 @@ const signUp = (dispatch: Dispatch<ActionLocal>) => {
 };
 
 const signIn = (dispatch: Dispatch<ActionLocal>) => {
-  return ({ email, password }: { email: string; password: string }) => {
-    console.log("SIGN IN", email, password);
+  return async ({ email, password }: { email: string; password: string }) => {
+    try {
+      const response = await trackerApi.post("/signin", { email, password });
+      await AsyncStorage.setItem("token", response.data.token);
+      dispatch({ type: ActionTypes.signIn, payload: response.data.token });
+      navigate(Routes.User);
+    } catch (err) {
+      console.error(err.response.data);
+      dispatch({
+        type: ActionTypes.addError,
+        payload: "something went wrong with sign in",
+      });
+    }
   };
 };
 
