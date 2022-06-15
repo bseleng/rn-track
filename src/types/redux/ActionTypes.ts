@@ -1,5 +1,5 @@
 export enum ActionTypes {
-  addError = "addError",
+  setAuthError = "setAuthError",
   signUp = "signUp",
   signIn = "signIn",
 }

@@ -9,7 +9,7 @@ import { Dispatch } from "react";
 
 const authReducer = (state: StateLocal, action: ActionLocal) => {
   switch (action.type) {
-    case ActionTypes.addError:
+    case ActionTypes.setAuthError:
       return { ...state, errorMessage: action.payload };
     case ActionTypes.signUp:
       return { ...state, token: action.payload, errorMessage: "" };
@@ -31,7 +31,7 @@ const signUp = (dispatch: Dispatch<ActionLocal>) => {
     } catch (err) {
       console.error(err.response.data);
       dispatch({
-        type: ActionTypes.addError,
+        type: ActionTypes.setAuthError,
         payload: "something went wrong with signup",
       });
     }
@@ -48,7 +48,7 @@ const signIn = (dispatch: Dispatch<ActionLocal>) => {
     } catch (err) {
       console.error(err.response.data);
       dispatch({
-        type: ActionTypes.addError,
+        type: ActionTypes.setAuthError,
         payload: "something went wrong with sign in",
       });
     }
@@ -61,8 +61,14 @@ const signOut = (dispatch: Dispatch<ActionLocal>) => {
   };
 };
 
+const clearError = (dispatch: Dispatch<ActionLocal>) => {
+  return () => {
+    dispatch({ type: ActionTypes.setAuthError, payload: "" });
+  };
+};
+
 export const { Provider, Context } = createDataContext(
   authReducer,
-  { signIn, signOut, signUp },
+  { signIn, signOut, signUp, clearError },
   { token: undefined, errorMessage: "" }
 );

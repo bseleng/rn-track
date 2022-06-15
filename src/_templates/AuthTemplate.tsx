@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet, View } from "react-native";
 import Routes from "../Navigators/routes";
 import Navigation from "../types/thirdParty/navigation";
@@ -8,7 +8,6 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { useForm } from "react-hook-form";
 import HookFormInput from "../_atoms/HookFormInput/HookFormInput";
 import { Context as AuthContext } from "../context/AuthContext";
-import { useContext } from "react";
 import { ActionTypes } from "../types/redux/ActionTypes";
 
 interface IProps {
@@ -25,7 +24,7 @@ export type SignUpFormValues = {
 };
 
 const AuthTemplate = ({
-  navigation: { navigate },
+  navigation,
   title,
   submitButtonAction,
   submitButtonText,
@@ -97,7 +96,7 @@ const AuthTemplate = ({
         <Spacer cssProp={"margin"} cssValues={[8, 8, 0, 8]}>
           <Button
             title={navButtonText}
-            onPress={() => navigate(navButtonRoute)}
+            onPress={() => navigation.navigate(navButtonRoute)}
             type="clear"
           />
         </Spacer>

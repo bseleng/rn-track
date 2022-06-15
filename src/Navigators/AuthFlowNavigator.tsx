@@ -12,11 +12,23 @@ const AuthFlowNavigator = () => (
       name={Routes.SignUp}
       component={SignUpScreen}
       options={{ headerShown: false }}
+      listeners={{
+        blur: (e) => {
+          // Prevent default action
+          console.log("hi, stack listener!  SignUpScreen");
+        },
+      }}
     />
     <Stack.Screen
       name={Routes.SignIn}
       component={SignInScreen}
       options={{ headerShown: false }}
+      listeners={{
+        beforeRemove: (e) => {
+          // Prevent default action
+          console.log("hi, stack listener!  SignInScreen");
+        },
+      }}
     />
   </Stack.Navigator>
 );
