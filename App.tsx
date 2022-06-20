@@ -6,6 +6,7 @@ import MainFlowNavigator from "./src/Navigators/MainFlowNavigator";
 import Routes from "./src/Navigators/routes";
 import { Provider as AuthProvider } from "./src/context/AuthContext";
 import { setNavigator } from "./src/navigationRef";
+import InitScreen from "./src/screens/InitScreen";
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
             animationEnabled: false,
           }}
         >
+          <Stack.Screen name={Routes.InitScreen} component={InitScreen} />
           <Stack.Screen
             name={Routes.Guest}
             component={AuthFlowNavigator}

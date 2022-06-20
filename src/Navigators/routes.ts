@@ -8,6 +8,7 @@ enum Routes {
   TrackListDetail = "TrackListDetail",
   Guest = "Guest",
   User = "User",
+  InitScreen = "InitScreen",
 }
 
 export default Routes;

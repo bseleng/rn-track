@@ -67,8 +67,17 @@ const clearError = (dispatch: Dispatch<ActionLocal>) => {
   };
 };
 
+const tryLocalSignIn = (dispatch: Dispatch<ActionLocal>) => async () => {
+  const token = await AsyncStorage.getItem("token");
+  if (token) {
+    dispatch({ type: ActionTypes.signIn, payload: token });
+    navigate(Routes.User);
+  } else {
+    navigate(Routes.SignUp);
+  }
+};
 export const { Provider, Context } = createDataContext(
   authReducer,
-  { signIn, signOut, signUp, clearError },
+  { signIn, signOut, signUp, clearError, tryLocalSignIn },
   { token: undefined, errorMessage: "" }
 );
