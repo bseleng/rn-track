@@ -56,8 +56,11 @@ const signIn = (dispatch: Dispatch<ActionLocal>) => {
 };
 
 const signOut = (dispatch: Dispatch<ActionLocal>) => {
-  return () => {
-    console.log("signed out");
+  return async () => {
+    console.log("sing out");
+    await AsyncStorage.removeItem("token");
+    dispatch({ type: ActionTypes.signUp, payload: undefined });
+    navigate(Routes.Guest, { screen: Routes.SignUp });
   };
 };
 
@@ -73,7 +76,7 @@ const tryLocalSignIn = (dispatch: Dispatch<ActionLocal>) => async () => {
     dispatch({ type: ActionTypes.signIn, payload: token });
     navigate(Routes.User);
   } else {
-    navigate(Routes.SignUp);
+    navigate(Routes.Guest, { screen: Routes.SignUp });
   }
 };
 export const { Provider, Context } = createDataContext(

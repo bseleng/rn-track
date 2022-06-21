@@ -9,6 +9,10 @@ type NavigationState = {
   type: string;
 };
 
+type navigationDispatch = (
+  commonActions: object | undefined
+) => NavigationState;
+
 type Navigation = {
   navigate: (route: string) => void;
   addListener: (
@@ -17,6 +21,7 @@ type Navigation = {
   ) => void;
   getParent: (id?: string) => Navigation;
   getState: () => NavigationState;
+  dispatch: navigationDispatch;
 };
 
 export default Navigation;

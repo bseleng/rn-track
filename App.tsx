@@ -24,7 +24,11 @@ const App = () => {
             component={AuthFlowNavigator}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name={Routes.User} component={MainFlowNavigator} />
+          <Stack.Screen
+            name={Routes.User}
+            component={MainFlowNavigator}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </AuthProvider>
