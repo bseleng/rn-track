@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://afraid-clubs-clap-95-182-94-13.loca.lt",
+  baseURL: "https://tasty-pears-mate-95-182-91-13.loca.lt",
 });

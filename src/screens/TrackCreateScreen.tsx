@@ -1,16 +1,22 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import { Text } from "react-native-elements";
+import { SafeAreaView } from "react-native-safe-area-context";
+import Map from "../_organisms/Map";
 
 const TrackCreateScreen = () => (
-  <View style={styles.wrap} >
-    <Text>TrackCreateScreen</Text>
-  </View>
-)
+  <SafeAreaView>
+    <View style={styles.wrap}>
+      <Text h2>Create Track </Text>
+      <Map />
+    </View>
+  </SafeAreaView>
+);
 
 const styles = StyleSheet.create({
   wrap: {
-    padding: 8
+    padding: 8,
   },
-})
+});
 
-export default  TrackCreateScreen
+export default TrackCreateScreen;

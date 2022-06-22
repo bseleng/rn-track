@@ -16,6 +16,7 @@ const MainFlowNavigator = () => (
     <BottomTabs.Screen
       name={Routes.TrackCreate}
       component={TrackCreateScreen}
+      options={{ headerShown: false }}
     />
     <BottomTabs.Screen name={Routes.Account} component={AccountScreen} />
   </BottomTabs.Navigator>
